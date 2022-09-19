@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_profile_addresses",
+  "info": {
+    "name": "address",
+    "icon": "arrow-alt-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "street": {
+      "type": "text"
+    },
+    "contry": {
+      "type": "string",
+      "default": "Maroc"
+    },
+    "long": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "string"
+    }
+  }
+}

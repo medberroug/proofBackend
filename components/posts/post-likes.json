@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_posts_post_likes",
+  "info": {
+    "name": "postLikes",
+    "icon": "air-freshener"
+  },
+  "options": {},
+  "attributes": {
+    "by": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "when": {
+      "type": "datetime"
+    }
+  }
+}

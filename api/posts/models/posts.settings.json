@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "posts",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "postComments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "posts.post-comments"
+    },
+    "postLikes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "posts.post-likes"
+    },
+    "by": {
+      "model": "userprofile"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

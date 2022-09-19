@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_profile_private_comments",
+  "info": {
+    "name": "PrivateComments",
+    "icon": "ankh"
+  },
+  "options": {},
+  "attributes": {
+    "comment": {
+      "type": "text"
+    },
+    "addedIn": {
+      "type": "datetime"
+    }
+  }
+}

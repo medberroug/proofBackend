@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "userprofiles",
+  "info": {
+    "name": "userprofile",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "PrivateComments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "profile.private-comments"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "profile.address"
+    },
+    "userId": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "badge": {
+      "type": "string"
+    }
+  }
+}
