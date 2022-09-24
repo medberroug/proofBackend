@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_profile_followings",
+  "info": {
+    "name": "following",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "userprofile": {
+      "model": "userprofile"
+    },
+    "when": {
+      "type": "datetime"
+    }
+  }
+}

@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getAllPosts/:profileId",
+      "handler": "posts.getAllPosts",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

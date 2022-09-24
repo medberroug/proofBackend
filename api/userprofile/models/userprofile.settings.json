@@ -45,6 +45,11 @@
     },
     "badge": {
       "type": "string"
+    },
+    "following": {
+      "type": "component",
+      "repeatable": true,
+      "component": "profile.following"
     }
   }
 }
