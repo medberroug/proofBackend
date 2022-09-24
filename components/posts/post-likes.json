@@ -2,13 +2,13 @@
   "collectionName": "components_posts_post_likes",
   "info": {
     "name": "postLikes",
-    "icon": "air-freshener"
+    "icon": "air-freshener",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "by": {
-      "plugin": "users-permissions",
-      "model": "user"
+      "model": "userprofile"
     },
     "when": {
       "type": "datetime"

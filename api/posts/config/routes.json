@@ -55,6 +55,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/followPoster/:posterId/:followerId/:action",
+      "handler": "posts.followPoster",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/likeAPost/:postId/:likedProfileId/:action",
+      "handler": "posts.likeAPost",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
