@@ -31,7 +31,7 @@ module.exports = {
                 id: posts[i].id,
                 text: posts[i].text,
                 username: await strapi.services.userprofile.findOne({ id: posts[i].by.id }).then(result => {
-                    return result.userId.username
+                    return result.userid.username
                 }),
                 posterId: posts[i].by.id,
                 created_at: dateCreatedIn,
