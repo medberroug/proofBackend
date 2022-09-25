@@ -47,7 +47,7 @@ module.exports = {
 
         }
         // return posts.map(entity => sanitizeEntity(entity, { model: strapi.models.posts }));
-        return postsReturned
+        return postsReturned.reverse()
     },
 
     async followPoster(ctx) {

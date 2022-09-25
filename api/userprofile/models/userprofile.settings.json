@@ -39,9 +39,10 @@
       "repeatable": false,
       "component": "profile.address"
     },
-    "userId": {
+    "userid": {
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "userprofileId"
     },
     "badge": {
       "type": "string"
