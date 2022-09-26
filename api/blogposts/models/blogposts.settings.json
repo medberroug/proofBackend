@@ -40,6 +40,9 @@
     "status": {
       "type": "boolean"
     },
+    "badge": {
+      "type": "string"
+    },
     "category": {
       "type": "string"
     }
