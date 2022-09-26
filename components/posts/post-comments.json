@@ -2,13 +2,13 @@
   "collectionName": "components_posts_post_comments",
   "info": {
     "name": "postComments",
-    "icon": "archway"
+    "icon": "archway",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "by": {
-      "plugin": "users-permissions",
-      "model": "user"
+      "model": "userprofile"
     },
     "text": {
       "type": "text"

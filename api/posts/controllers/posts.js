@@ -49,6 +49,59 @@ module.exports = {
         // return posts.map(entity => sanitizeEntity(entity, { model: strapi.models.posts }));
         return postsReturned.reverse()
     },
+    async getPost(ctx) {
+        const { profileId, postId } = ctx.params;
+        let post = await strapi.services.posts.findOne({ status: true, id: postId });
+        console.log(post)
+        const dateCreatedIn = formatDistanceToNow(
+            post.created_at,
+            { locale: eoLocale }
+        )
+        let postCommentsList = []
+        for (let j = 0; j < post.postComments.length; j++) {
+            let commentDate = formatDistanceToNow(
+                new Date(post.postComments[j].when),
+                { locale: eoLocale }
+            )
+            if (!post.postComments[j].by.blocked) {
+                let oneComment = {
+                    id: post.postComments[j].id,
+                    text: post.postComments[j].text,
+                    username: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.id  }).then(result => {
+                        return result.userid.username
+                    }),
+                    commenterId: post.postComments[j].by.id,
+                    profilePhoto: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.userprofileId }).then(result => {
+                        return result.photo ? result.photo.url : null
+                    }),
+                    when: commentDate,
+                    badge: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.userprofileId }).then(result => {
+                        return result.badge
+                    }),
+                }
+                postCommentsList.push(oneComment)
+            }
+        }
+        postCommentsList.reverse()
+        let postChosen = {
+            id: post.id,
+            text: post.text,
+            username: await strapi.services.userprofile.findOne({ id: post.by.id }).then(result => {
+                return result.userid.username
+            }),
+            posterId: post.by.id,
+            created_at: dateCreatedIn,
+            nbOfComments: post.postComments.length,
+            nbOfLikes: post.postLikes.length,
+            image: post.images ? process.env.serverUrl + post.images.url : null,
+            profileLikedIt: isRequesterLikedThePost(profileId, post),
+            profileFollowingPoster: await isRequesterFollowingPoster(profileId, post.by.id),
+            posterBadge: post.by.badge,
+            posterProfileImage: post.by.photo ? process.env.serverUrl + post.by.photo.url : null,
+            postComments: postCommentsList
+        }
+        return postChosen
+    },
 
     async followPoster(ctx) {
         const { posterId, followerId, action } = ctx.params;
@@ -93,9 +146,9 @@ module.exports = {
     async likeAPost(ctx) {
         const { postId, likedProfileId, action } = ctx.params;
         let post = await strapi.services.posts.findOne({ id: postId });
-        console.log("postId"+postId);
-        console.log("likedProfileId"+likedProfileId);
-        console.log("action"+action);
+        console.log("postId" + postId);
+        console.log("likedProfileId" + likedProfileId);
+        console.log("action" + action);
         let alreadyLiked = false
         let indexOfLiking = 0
         for (let i = 0; i < post.postLikes.length; i++) {
@@ -105,7 +158,7 @@ module.exports = {
                 break
             }
         }
-        console.log("action"+action);
+        console.log("action" + action);
         if (action == "like" && !alreadyLiked) {
 
             post.postLikes.push({
@@ -131,6 +184,23 @@ module.exports = {
 
 
         return false
+    },
+    async commentOnPost(ctx) {
+        const { postId, commenterId } = ctx.params;
+        let post = await strapi.services.posts.findOne({ id: postId });
+        post.postComments.push({
+            by: {
+                id: commenterId
+            },
+            when: new Date(),
+            text: ctx.request.body.text,
+        })
+        let postComments = post.postComments
+        await strapi.services.posts.update({ id: postId }, {
+            postComments: postComments
+        });
+        return true
+
     },
 
 

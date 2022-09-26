@@ -71,6 +71,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getPost/:profileId/:postId",
+      "handler": "posts.getPost",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/commentOnPost/:postId/:commenterId",
+      "handler": "posts.commentOnPost",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
