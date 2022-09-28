@@ -154,4 +154,43 @@ module.exports = {
         });
         return true
     },
+    async likeABlogPost(ctx) {
+        const { id, likedProfileId, action } = ctx.params;
+        let blogpost = await strapi.services.blogposts.findOne({ id: id });
+        let alreadyLiked = false
+        let indexOfLiking = 0
+        for (let i = 0; i < blogpost.blogPostLikes.length; i++) {
+            if (blogpost.blogPostLikes[i].by.id == likedProfileId) {
+                alreadyLiked = true
+                indexOfLiking = i
+                break
+            }
+        }
+        console.log("action" + action);
+        if (action == "like" && !alreadyLiked) {
+
+            blogpost.blogPostLikes.push({
+                by: {
+                    id: likedProfileId
+                },
+                when: new Date()
+            })
+            let blogPostLikes = blogpost.blogPostLikes
+            await strapi.services.blogposts.update({ id }, {
+                blogPostLikes: blogPostLikes
+            });
+            return true
+
+        } else if (action == "unlike" && alreadyLiked) {
+            blogpost.blogPostLikes.splice(indexOfLiking, 1)
+            let blogPostLikes = blogpost.blogPostLikes
+            await strapi.services.blogposts.update({ id }, {
+                blogPostLikes: blogPostLikes
+            });
+            return true
+        }
+
+
+        return false
+    },
 };

@@ -79,6 +79,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/likeABlogPost/:id/:likedProfileId/:action",
+      "handler": "blogposts.likeABlogPost",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
