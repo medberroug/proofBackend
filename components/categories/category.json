@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_categories_categories",
+  "info": {
+    "name": "category",
+    "icon": "audio-description",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "integer"
+    }
+  }
+}

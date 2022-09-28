@@ -47,6 +47,38 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/blogPostsByCategories",
+      "handler": "blogposts.blogPostsByCategories",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/blogPostsbyOneCategory/:categoryName",
+      "handler": "blogposts.blogPostsbyOneCategory",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/blogPost/:id",
+      "handler": "blogposts.blogPost",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/commentOnBlogPost/:id/:commenterId",
+      "handler": "blogposts.commentOnBlogPost",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

@@ -38,12 +38,16 @@
       "component": "posts.post-likes"
     },
     "status": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "badge": {
       "type": "string"
     },
     "category": {
+      "type": "string"
+    },
+    "title": {
       "type": "string"
     }
   }
