@@ -118,7 +118,7 @@ module.exports = {
             }
             blogPostComments.push(newblogPostComment)
         }
-        blogPostComments.reverse()
+        blogPostComments
         let dateCreatedIn = formatDistanceToNow(
             new Date(blogpost.created_at),
             { locale: eoLocale }
@@ -167,7 +167,7 @@ module.exports = {
             }
         }
         console.log("action" + action);
-        if (action == "like" && !alreadyLiked) {
+        if (!alreadyLiked) {
 
             blogpost.blogPostLikes.push({
                 by: {
@@ -181,7 +181,7 @@ module.exports = {
             });
             return true
 
-        } else if (action == "unlike" && alreadyLiked) {
+        } else if ( alreadyLiked) {
             blogpost.blogPostLikes.splice(indexOfLiking, 1)
             let blogPostLikes = blogpost.blogPostLikes
             await strapi.services.blogposts.update({ id }, {

@@ -82,7 +82,7 @@ module.exports = {
                 postCommentsList.push(oneComment)
             }
         }
-        postCommentsList.reverse()
+        postCommentsList
         let postChosen = {
             id: post.id,
             text: post.text,
