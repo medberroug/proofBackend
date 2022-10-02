@@ -112,7 +112,7 @@ module.exports = {
                     return result.userid.username
                 }),
                 when: commentDate,
-                profileImage: blogpost.blogPostComments[j].by.photo.url,
+                profileImage: blogpost.blogPostComments[j].by.photo ? blogpost.blogPostComments[j].by.photo.url : null,
                 comment: blogpost.blogPostComments[j].text,
                 badge: blogpost.blogPostComments[j].by.badge
             }
