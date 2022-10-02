@@ -67,7 +67,9 @@ module.exports = {
                 children.metrics[i].lastValue = ctx.request.body.value
             }
         }
-
+        await strapi.services.children.update({ id: childId }, {
+            metrics : children.metrics
+        });
         return true
     },
     async newMetric(ctx) {
@@ -84,6 +86,9 @@ module.exports = {
                 value: ctx.request.body.value
             }],
         })
+        await strapi.services.children.update({ id: childId }, {
+            metrics : children.metrics
+        });
         return true
     },
     async updatePhoto(ctx) {
