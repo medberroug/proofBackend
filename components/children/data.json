@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_children_data",
+  "info": {
+    "name": "data",
+    "icon": "arrow-alt-circle-down"
+  },
+  "options": {},
+  "attributes": {
+    "when": {
+      "type": "datetime"
+    },
+    "value": {
+      "type": "decimal"
+    }
+  }
+}

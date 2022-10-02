@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_children_metrics",
+  "info": {
+    "name": "metrics",
+    "icon": "align-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metricName": {
+      "type": "string"
+    },
+    "lastUpdate": {
+      "type": "datetime"
+    },
+    "notation": {
+      "type": "string"
+    },
+    "data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "children.data"
+    },
+    "lastValue": {
+      "type": "decimal"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "children",
+  "info": {
+    "name": "children",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "birthday": {
+      "type": "datetime"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "parent": {
+      "model": "userprofile"
+    },
+    "bigImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "metrics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "children.metrics"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
