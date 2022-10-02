@@ -59,7 +59,7 @@ module.exports = {
         for (let i = 0; i < children.metrics.length; i++) {
             if (children.metrics[i].metricName == metric) {
                 let lastUpdate = new Date()
-                children.metrics[i].push({
+                children.metrics[i].data.push({
                     when: lastUpdate,
                     value: ctx.request.body.value
                 })
