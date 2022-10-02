@@ -58,7 +58,7 @@ module.exports = {
         let children = await strapi.services.children.findOne({ id: childId });
         for (let i = 0; i < children.metrics.length; i++) {
             if (children.metrics[i].metricName == metric) {
-                lastUpdate = new Date()
+                let lastUpdate = new Date()
                 children.metrics[i].push({
                     when: lastUpdate,
                     value: ctx.request.body.value
@@ -73,7 +73,7 @@ module.exports = {
     async newMetric(ctx) {
         const { childId} = ctx.params;
         let children = await strapi.services.children.findOne({ id: childId });
-        lastUpdate = new Date()
+        let lastUpdate = new Date()
         children.metrics.push({
             metricName: ctx.request.body.metricName,
             lastUpdate: lastUpdate,
