@@ -88,5 +88,22 @@
         "policies": []
       }
     }
+    ,
+    {
+      "method": "GET",
+      "path": "/getBlogPostsAdmin",
+      "handler": "blogposts.getBlogPostsAdmin",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/actionOnPost/:id/:action",
+      "handler": "blogposts.actionOnPost",
+      "config": {
+        "policies": []
+      }
+    }
   ]
 }

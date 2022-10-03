@@ -193,4 +193,57 @@ module.exports = {
 
         return false
     },
+    async getBlogPostsAdmin(ctx) {
+        // const { profileId } = ctx.params;
+        let blogposts;
+        if (ctx.query._q) {
+            blogposts = await strapi.services.blogposts.search({ });
+        } else {
+            blogposts = await strapi.services.blogposts.find({  });
+        }
+        let blogPostsToBeReturned = []
+        blogposts = blogposts.map(entity => sanitizeEntity(entity, { model: strapi.models.blogposts }));
+        for (let i = 0; i < blogposts.length; i++) {
+            // var dateCreatedIn = formatDistanceToNow(
+            //     blogposts[i].created_at,
+            //     { locale: eoLocale }
+            // )
+            let newBlogPost = {
+                id: blogposts[i].id,
+                title: blogposts[i].title,
+                nbOfLikes: blogposts[i].blogPostLikes.length,
+                nbOfComments: blogposts[i].blogPostComments.length,
+                when: blogposts[i].created_at,
+                category: blogposts[i].category,
+                status: blogposts[i].status,
+                publishTime: blogposts[i].publishTime
+            }
+            blogPostsToBeReturned.push(newBlogPost)
+        }
+        return blogPostsToBeReturned
+    },
+    async actionOnPost(ctx) {
+        const { id, action } = ctx.params;
+        let blogpost = await strapi.services.blogposts.findOne({ id: id });
+        if (action == "unpublish") {
+            blogpost.status = false
+            await strapi.services.blogposts.update({ id }, {
+                status: blogpost.status
+            });
+            return true
+        } else if ( action == "publish") {
+            blogpost.status = true
+            await strapi.services.blogposts.update({ id }, {
+                status: blogpost.status
+            });
+            return true
+        }else if ( action == "delete") {
+            blogpost.status = true
+            await strapi.services.blogposts.delete({ id });
+            return true
+        }
+
+
+        return false
+    },
 };

@@ -49,6 +49,9 @@
     },
     "title": {
       "type": "string"
+    },
+    "publishTime": {
+      "type": "datetime"
     }
   }
 }
