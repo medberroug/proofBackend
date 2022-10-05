@@ -12,8 +12,7 @@
   },
   "attributes": {
     "by": {
-      "plugin": "users-permissions",
-      "model": "user"
+      "model": "userprofile"
     },
     "text": {
       "type": "richtext"
