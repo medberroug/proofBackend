@@ -87,6 +87,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getAllPostsForAdmin",
+      "handler": "posts.getAllPostsForAdmin",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

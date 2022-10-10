@@ -1044,6 +1044,9 @@
               "following": {
                 "type": "component"
               },
+              "robot": {
+                "type": "boolean"
+              },
               "published_at": {
                 "type": "string"
               },
@@ -1174,6 +1177,9 @@
                     "following": {
                       "type": "component"
                     },
+                    "robot": {
+                      "type": "boolean"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -1240,6 +1246,9 @@
                     },
                     "following": {
                       "type": "component"
+                    },
+                    "robot": {
+                      "type": "boolean"
                     },
                     "published_at": {
                       "type": "string"
@@ -1336,6 +1345,9 @@
                     "following": {
                       "type": "component"
                     },
+                    "robot": {
+                      "type": "boolean"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -1402,6 +1414,9 @@
                     },
                     "following": {
                       "type": "component"
+                    },
+                    "robot": {
+                      "type": "boolean"
                     },
                     "published_at": {
                       "type": "string"

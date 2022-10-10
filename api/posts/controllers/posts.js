@@ -48,6 +48,45 @@ module.exports = {
         }
         // return posts.map(entity => sanitizeEntity(entity, { model: strapi.models.posts }));
         return postsReturned.reverse()
+    },async getAllPostsForAdmin(ctx) {
+
+        let posts;
+        if (ctx.query._q) {
+            posts = await strapi.services.posts.search();
+        } else {
+            posts = await strapi.services.posts.find();
+        }
+
+        posts = posts.map(entity => sanitizeEntity(entity, { model: strapi.models.posts }));
+        console.log(posts)
+        let postsReturned = []
+
+        for (let i = 0; i < posts.length; i++) {
+            const dateCreatedIn = formatDistanceToNow(
+                posts[i].created_at,
+                { locale: eoLocale }
+            )
+            let postChosen = {
+                id: posts[i].id,
+                text: posts[i].text,
+                username: await strapi.services.userprofile.findOne({ id: posts[i].by.id }).then(result => {
+                    return result.userid.username
+                }),
+                posterId: posts[i].by.id,
+                created_at: dateCreatedIn,
+                nbOfComments: posts[i].postComments.length,
+                nbOfLikes: posts[i].postLikes.length,
+                image: posts[i].images ?  posts[i].images.url : null,
+                // profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
+                // profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
+                posterBadge: posts[i].by.badge,
+                posterProfileImage: posts[i].by.photo ?  posts[i].by.photo.url : null
+            }
+            postsReturned.push(postChosen)
+
+        }
+        // return posts.map(entity => sanitizeEntity(entity, { model: strapi.models.posts }));
+        return postsReturned.reverse()
     },
     async getPost(ctx) {
         const { profileId, postId } = ctx.params;

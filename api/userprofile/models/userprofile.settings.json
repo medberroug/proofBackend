@@ -51,6 +51,10 @@
       "type": "component",
       "repeatable": true,
       "component": "profile.following"
+    },
+    "robot": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

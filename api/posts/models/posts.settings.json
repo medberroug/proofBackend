@@ -39,6 +39,9 @@
     "status": {
       "type": "boolean",
       "default": true
+    },
+    "publishTime": {
+      "type": "datetime"
     }
   }
 }

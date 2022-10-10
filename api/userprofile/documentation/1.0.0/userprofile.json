@@ -743,6 +743,9 @@
                     "following": {
                       "type": "component"
                     },
+                    "robot": {
+                      "type": "boolean"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -760,6 +763,10 @@
                 }
               }
             }
+          },
+          "robot": {
+            "type": "boolean",
+            "default": false
           },
           "published_at": {
             "type": "string",
@@ -878,6 +885,9 @@
                     "following": {
                       "type": "component"
                     },
+                    "robot": {
+                      "type": "boolean"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -895,6 +905,10 @@
                 }
               }
             }
+          },
+          "robot": {
+            "type": "boolean",
+            "default": false
           },
           "published_at": {
             "type": "string",
