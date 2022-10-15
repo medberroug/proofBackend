@@ -149,12 +149,13 @@ module.exports = {
         let alreadyFollowed = false
         let indexOfFollowing = 0
         for (let i = 0; i < followerUserProfile.following.length; i++) {
-            if (followerUserProfile.following[i].userprofile.id == followerId) {
+            if (followerUserProfile.following[i].userprofile.id == posterId) {
                 alreadyFollowed = true
                 indexOfFollowing = i
                 break
             }
         }
+        console.log(alreadyFollowed);
         if (action == "follow" && !alreadyFollowed) {
 
             followerUserProfile.following.push({
