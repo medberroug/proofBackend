@@ -58,12 +58,13 @@ module.exports = {
         categories.sort(function (a, b) {
             return a.rank - b.rank;
         })
+        let lastList = []
         for (let p = 0; p < categories.length; p++) {
-            if (categories[p].blogPosts.length == 0) {
-                categories.splice(p, 1)
+            if (categories[p].blogPosts.length > 0) {
+                lastList.push(categories[p])
             }
         }
-        return categories
+        return lastList
     },
     async blogPostsbyOneCategory(ctx) {
         const { categoryName } = ctx.params;
