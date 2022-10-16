@@ -3,6 +3,12 @@ const { sanitizeEntity } = require('strapi-utils');
 var formatDistanceToNow = require('date-fns/formatDistanceToNow')
 const eoLocale = require('date-fns/locale/fr')
 var parseISO = require('date-fns/parseISO')
+const base64 = require('node-base64-image');
+const axios = require('axios')
+const FormData = require('form-data');
+var File = require("file-class");
+
+const uploader = require('../../../helpers/uploader');
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
@@ -48,7 +54,8 @@ module.exports = {
         }
         // return posts.map(entity => sanitizeEntity(entity, { model: strapi.models.posts }));
         return postsReturned.reverse()
-    },async getAllPostsForAdmin(ctx) {
+    },
+    async getAllPostsForAdmin(ctx) {
 
         let posts;
         if (ctx.query._q) {
@@ -76,11 +83,11 @@ module.exports = {
                 created_at: dateCreatedIn,
                 nbOfComments: posts[i].postComments.length,
                 nbOfLikes: posts[i].postLikes.length,
-                image: posts[i].images ?  posts[i].images.url : null,
+                image: posts[i].images ? posts[i].images.url : null,
                 // profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
                 // profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
                 posterBadge: posts[i].by.badge,
-                posterProfileImage: posts[i].by.photo ?  posts[i].by.photo.url : null
+                posterProfileImage: posts[i].by.photo ? posts[i].by.photo.url : null
             }
             postsReturned.push(postChosen)
 
@@ -106,7 +113,7 @@ module.exports = {
                 let oneComment = {
                     id: post.postComments[j].id,
                     text: post.postComments[j].text,
-                    username: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.id  }).then(result => {
+                    username: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.id }).then(result => {
                         return result.userid.username
                     }),
                     commenterId: post.postComments[j].by.id,
@@ -239,6 +246,33 @@ module.exports = {
         await strapi.services.posts.update({ id: postId }, {
             postComments: postComments
         });
+        return true
+
+    },
+    async uploadimage64(ctx) {
+        // const { postId, commenterId } = ctx.params;
+        // ctx.request.body.base
+        // let post = await strapi.services.posts.findOne({ id: postId });
+        let base = ctx.request.body.base
+        let fd = new FormData();
+        // fd = {
+        //     name: JSON.stringify( { first: 'Saeid', last: 'Alidadi' } )
+        //   }
+        let myimage = await base64.decode(base, { fname: 'example', ext: 'jpeg' });
+
+        // let file = new File([base], "filename.jpeg");
+        fd.append('image', myimage);
+        // fd.append('image', file)
+        let myImage = await axios
+            .post("http://localhost:1337/upload", fd)
+
+        return true
+
+    }, async uploadImageTest(ctx) {
+        const { url } = ctx.params;
+        const img = await uploader.uploadToLibrary(url);
+        console.log(img)
+
         return true
 
     },

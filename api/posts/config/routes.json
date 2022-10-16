@@ -95,6 +95,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/uploadimage64",
+      "handler": "posts.uploadimage64",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/uploadImageTest/:url",
+      "handler": "posts.uploadImageTest",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
