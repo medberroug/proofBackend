@@ -105,8 +105,8 @@
       }
     },
     {
-      "method": "GET",
-      "path": "/uploadImageTest/:url",
+      "method": "POST",
+      "path": "/uploadImageTest",
       "handler": "posts.uploadImageTest",
       "config": {
         "policies": []

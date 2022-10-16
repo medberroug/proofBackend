@@ -269,11 +269,11 @@ module.exports = {
         return true
 
     }, async uploadImageTest(ctx) {
-        const { url } = ctx.params;
+
+        let url = ctx.request.body.url
         const img = await uploader.uploadToLibrary(url);
         console.log(img)
-
-        return true
+        return img
 
     },
 
