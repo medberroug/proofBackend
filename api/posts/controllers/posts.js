@@ -43,11 +43,11 @@ module.exports = {
                 created_at: dateCreatedIn,
                 nbOfComments: posts[i].postComments.length,
                 nbOfLikes: posts[i].postLikes.length,
-                image: posts[i].images ? process.env.serverUrl + posts[i].images.url : null,
+                image: posts[i].images ?  posts[i].images.url : null,
                 profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
                 profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
                 posterBadge: posts[i].by.badge,
-                posterProfileImage: posts[i].by.photo ? process.env.serverUrl + posts[i].by.photo.url : null
+                posterProfileImage: posts[i].by.photo ?  posts[i].by.photo.url : null
             }
             postsReturned.push(postChosen)
 
@@ -139,11 +139,11 @@ module.exports = {
             created_at: dateCreatedIn,
             nbOfComments: post.postComments.length,
             nbOfLikes: post.postLikes.length,
-            image: post.images ? process.env.serverUrl + post.images.url : null,
+            image: post.images ?  post.images.url : null,
             profileLikedIt: isRequesterLikedThePost(profileId, post),
             profileFollowingPoster: await isRequesterFollowingPoster(profileId, post.by.id),
             posterBadge: post.by.badge,
-            posterProfileImage: post.by.photo ? process.env.serverUrl + post.by.photo.url : null,
+            posterProfileImage: post.by.photo ? post.by.photo.url : null,
             postComments: postCommentsList
         }
         return postChosen
