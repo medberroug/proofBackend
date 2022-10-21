@@ -120,7 +120,7 @@ module.exports = {
                     }),
                     commenterId: post.postComments[j].by.id,
                     profilePhoto: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.userprofileId }).then(result => {
-                        return result.photo ? result.photo.url : null
+                        return result.photo ? result.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024"
                     }),
                     when: commentDate,
                     badge: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.userprofileId }).then(result => {
