@@ -145,7 +145,7 @@ module.exports = {
             profileLikedIt: isRequesterLikedThePost(profileId, post),
             profileFollowingPoster: await isRequesterFollowingPoster(profileId, post.by.id),
             posterBadge: post.by.badge,
-            posterProfileImage: post.by.photo ? post.by.photo.url : null,
+            posterProfileImage: post.by.photo ? post.by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024",
             postComments: postCommentsList
         }
         return postChosen
