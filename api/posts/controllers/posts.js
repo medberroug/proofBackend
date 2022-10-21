@@ -47,7 +47,7 @@ module.exports = {
                 profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
                 profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
                 posterBadge: posts[i].by.badge,
-                posterProfileImage: posts[i].by.photo ? posts[i].by.photo.url : null
+                posterProfileImage: posts[i].by.photo ? posts[i].by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024"
             }
             postsReturned.push(postChosen)
 
