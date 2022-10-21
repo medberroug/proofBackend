@@ -48,7 +48,7 @@ module.exports = {
                 profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
                 profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
                 posterBadge: posts[i].by.badge,
-                posterProfileImage: posts[i].by.photo ? posts[i].by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024"
+                posterProfileImage: posts[i].by.photo ? posts[i].by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png"
 
             }
             postsReturned.push(postChosen)
@@ -112,20 +112,18 @@ module.exports = {
                 { locale: eoLocale }
             )
             if (!post.postComments[j].by.blocked) {
+                let postID= post.postComments[j].by.id
                 let oneComment = {
                     id: post.postComments[j].id,
                     text: post.postComments[j].text,
-                    username: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.id }).then(result => {
+                    username: await strapi.services.userprofile.findOne({ id: postID }).then(result => {
                         return result.userid.username
                     }),
                     commenterId: post.postComments[j].by.id,
-                    profilePhoto: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.id }).then(result => {
-                        return result.photo ? result.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024"
-                    }),
+                    profilePhoto: post.postComments[j].by.photo ? post.postComments[j].by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png"
+                    ,
                     when: commentDate,
-                    badge: await strapi.services.userprofile.findOne({ id: post.postComments[j].by.id }).then(result => {
-                        return result.badge
-                    }),
+                    badge: post.postComments[j].by.badge
                 }
                 postCommentsList.push(oneComment)
             }
@@ -145,7 +143,7 @@ module.exports = {
             profileLikedIt: isRequesterLikedThePost(profileId, post),
             profileFollowingPoster: await isRequesterFollowingPoster(profileId, post.by.id),
             posterBadge: post.by.badge,
-            posterProfileImage: post.by.photo ? post.by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024",
+            posterProfileImage: post.by.photo ? post.by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png",
             postComments: postCommentsList
         }
         return postChosen
