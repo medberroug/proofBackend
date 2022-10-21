@@ -43,11 +43,19 @@ module.exports = {
                 created_at: dateCreatedIn,
                 nbOfComments: posts[i].postComments.length,
                 nbOfLikes: posts[i].postLikes.length,
+<<<<<<< HEAD
                 image: posts[i].images ? posts[i].images.url : null,
                 profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
                 profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
                 posterBadge: posts[i].by.badge,
                 posterProfileImage: posts[i].by.photo ? posts[i].by.photo.url : "/uploads/Asset_17_b7f5d7bdbc.png?6433737.100000024"
+=======
+                image: posts[i].images ?  posts[i].images.url : null,
+                profileLikedIt: isRequesterLikedThePost(profileId, posts[i]),
+                profileFollowingPoster: await isRequesterFollowingPoster(profileId, posts[i].by.id),
+                posterBadge: posts[i].by.badge,
+                posterProfileImage: posts[i].by.photo ?  posts[i].by.photo.url : null
+>>>>>>> bb5bc67aebf36327273c0c7292dffe3b803e7d8a
             }
             postsReturned.push(postChosen)
 
