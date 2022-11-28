@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_products_comments",
+  "info": {
+    "name": "comments",
+    "icon": "american-sign-language-interpreting"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    },
+    "added": {
+      "type": "datetime"
+    }
+  }
+}

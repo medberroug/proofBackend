@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/userprofiles": {
+    "/productcategories": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the productcategories's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve productcategories document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Userprofile"
+                    "$ref": "#/components/schemas/Productcategories"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Userprofile"
+          "Productcategories"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new productcategories record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve productcategories document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Userprofile"
+                  "$ref": "#/components/schemas/Productcategories"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Userprofile"
+          "Productcategories"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewUserprofile"
+                "$ref": "#/components/schemas/NewProductcategories"
               }
             }
           }
         }
       }
     },
-    "/userprofiles/count": {
+    "/productcategories/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of productcategories documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve productcategories document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Userprofile"
+          "Productcategories"
         ],
         "parameters": []
       }
     },
-    "/userprofiles/{id}": {
+    "/productcategories/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one productcategories record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve productcategories document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Userprofile"
+                  "$ref": "#/components/schemas/Productcategories"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Userprofile"
+          "Productcategories"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single productcategories record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve productcategories document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Userprofile"
+                  "$ref": "#/components/schemas/Productcategories"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Userprofile"
+          "Productcategories"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewUserprofile"
+                "$ref": "#/components/schemas/NewProductcategories"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single productcategories record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single productcategories based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Userprofile"
+          "Productcategories"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Userprofile": {
+      "Productcategories": {
         "required": [
           "id"
         ],
@@ -522,306 +522,11 @@
           "id": {
             "type": "string"
           },
-          "firstName": {
+          "name": {
             "type": "string"
           },
-          "lastName": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "photo": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "PrivateComments": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "comment": {
-                  "type": "string"
-                },
-                "addedIn": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "address": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "city": {
-                "type": "string"
-              },
-              "street": {
-                "type": "string"
-              },
-              "contry": {
-                "type": "string",
-                "default": "Maroc"
-              },
-              "long": {
-                "type": "string"
-              },
-              "lat": {
-                "type": "string"
-              }
-            }
-          },
-          "userid": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "userprofileId": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "badge": {
-            "type": "string"
-          },
-          "following": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "userprofile": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "phone": {
-                      "type": "string"
-                    },
-                    "photo": {
-                      "type": "string"
-                    },
-                    "PrivateComments": {
-                      "type": "component"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "userid": {
-                      "type": "string"
-                    },
-                    "badge": {
-                      "type": "string"
-                    },
-                    "following": {
-                      "type": "component"
-                    },
-                    "robot": {
-                      "type": "boolean"
-                    },
-                    "orders": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "when": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "robot": {
-            "type": "boolean",
-            "default": false
-          },
-          "orders": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "items": {
-                  "type": "component"
-                },
-                "subTotal": {
-                  "type": "number"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
-                },
-                "address": {
-                  "type": "component"
-                },
-                "shippingTime": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "component"
-                },
-                "client": {
-                  "type": "string"
-                },
-                "shippingFees": {
-                  "type": "number"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
+          "rank": {
+            "type": "integer"
           },
           "published_at": {
             "type": "string",
@@ -829,153 +534,13 @@
           }
         }
       },
-      "NewUserprofile": {
+      "NewProductcategories": {
         "properties": {
-          "firstName": {
+          "name": {
             "type": "string"
           },
-          "lastName": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "PrivateComments": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "comment": {
-                  "type": "string"
-                },
-                "addedIn": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "address": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "city": {
-                "type": "string"
-              },
-              "street": {
-                "type": "string"
-              },
-              "contry": {
-                "type": "string",
-                "default": "Maroc"
-              },
-              "long": {
-                "type": "string"
-              },
-              "lat": {
-                "type": "string"
-              }
-            }
-          },
-          "userid": {
-            "type": "string"
-          },
-          "badge": {
-            "type": "string"
-          },
-          "following": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "userprofile": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "phone": {
-                      "type": "string"
-                    },
-                    "photo": {
-                      "type": "string"
-                    },
-                    "PrivateComments": {
-                      "type": "component"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "userid": {
-                      "type": "string"
-                    },
-                    "badge": {
-                      "type": "string"
-                    },
-                    "following": {
-                      "type": "component"
-                    },
-                    "robot": {
-                      "type": "boolean"
-                    },
-                    "orders": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "when": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "robot": {
-            "type": "boolean",
-            "default": false
-          },
-          "orders": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "rank": {
+            "type": "integer"
           },
           "published_at": {
             "type": "string",
@@ -993,7 +558,7 @@
   },
   "tags": [
     {
-      "name": "Userprofile"
+      "name": "Productcategories"
     }
   ]
 }

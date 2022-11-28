@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_products_discounts",
+  "info": {
+    "name": "discounts",
+    "icon": "angle-double-right"
+  },
+  "options": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "type": {
+      "type": "string"
+    },
+    "startingDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "status": {
+      "type": "boolean",
+      "default": false
+    },
+    "minOrder": {
+      "type": "decimal"
+    }
+  }
+}

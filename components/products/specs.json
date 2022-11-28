@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_products_specs",
+  "info": {
+    "name": "specs",
+    "icon": "ambulance"
+  },
+  "options": {},
+  "attributes": {
+    "specText": {
+      "type": "string"
+    }
+  }
+}

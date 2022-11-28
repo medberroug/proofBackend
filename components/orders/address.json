@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_orders_addresses",
+  "info": {
+    "name": "address",
+    "icon": "arrow-right"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "long": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "string"
+    }
+  }
+}

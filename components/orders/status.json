@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_orders_statuses",
+  "info": {
+    "name": "status",
+    "icon": "arrows-alt-v"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    }
+  }
+}

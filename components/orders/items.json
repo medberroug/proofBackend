@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_orders_items",
+  "info": {
+    "name": "items",
+    "icon": "arrow-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "productId": {
+      "model": "products"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "up": {
+      "type": "decimal"
+    },
+    "subTotal": {
+      "type": "decimal"
+    }
+  }
+}

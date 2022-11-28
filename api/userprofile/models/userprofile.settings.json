@@ -55,6 +55,10 @@
     "robot": {
       "type": "boolean",
       "default": false
+    },
+    "orders": {
+      "via": "client",
+      "collection": "orders"
     }
   }
 }

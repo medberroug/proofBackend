@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "products",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "up": {
+      "type": "decimal"
+    },
+    "topPhoto": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "status": {
+      "type": "boolean",
+      "default": false
+    },
+    "code": {
+      "type": "string"
+    },
+    "specs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "products.specs"
+    },
+    "totalRating": {
+      "type": "decimal"
+    },
+    "ratings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "products.ratings"
+    },
+    "category": {
+      "model": "productcategories"
+    },
+    "stock": {
+      "type": "component",
+      "repeatable": true,
+      "component": "products.stock"
+    },
+    "securityStockQuantity": {
+      "type": "decimal"
+    },
+    "producer": {
+      "model": "producers"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "unit": {
+      "type": "string"
+    }
+  }
+}

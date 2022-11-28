@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "orders",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.items"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "tax": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "orders.address"
+    },
+    "shippingTime": {
+      "type": "string"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.status"
+    },
+    "client": {
+      "model": "userprofile",
+      "via": "orders"
+    },
+    "shippingFees": {
+      "type": "decimal"
+    }
+  }
+}

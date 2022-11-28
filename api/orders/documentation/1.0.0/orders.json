@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/children": {
+    "/orders": {
       "get": {
         "deprecated": false,
-        "description": "Find all the children's records",
+        "description": "Find all the orders's records",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve orders document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Children"
+                    "$ref": "#/components/schemas/Orders"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Orders"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new children record",
+        "description": "Create a new orders record",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve orders document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Children"
+                  "$ref": "#/components/schemas/Orders"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Orders"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewChildren"
+                "$ref": "#/components/schemas/NewOrders"
               }
             }
           }
         }
       }
     },
-    "/children/count": {
+    "/orders/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of children documents",
+        "description": "Retrieve the numver of orders documents",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve orders document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Orders"
         ],
         "parameters": []
       }
     },
-    "/children/{id}": {
+    "/orders/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one children record",
+        "description": "Find one orders record",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve orders document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Children"
+                  "$ref": "#/components/schemas/Orders"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Orders"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single children record",
+        "description": "Update a single orders record",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve orders document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Children"
+                  "$ref": "#/components/schemas/Orders"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Orders"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewChildren"
+                "$ref": "#/components/schemas/NewOrders"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single children record",
+        "description": "Delete a single orders record",
         "responses": {
           "200": {
-            "description": "deletes a single children based on the ID supplied",
+            "description": "deletes a single orders based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Orders"
         ],
         "parameters": [
           {
@@ -509,222 +509,12 @@
             }
           }
         ]
-      }
-    },
-    "/getMyChildren/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Children"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/updateMetric/{childId}/{metric}": {
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Children"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/newMetric/{childId}": {
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Children"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     }
   },
   "components": {
     "schemas": {
-      "Children": {
+      "Orders": {
         "required": [
           "id"
         ],
@@ -732,20 +522,153 @@
           "id": {
             "type": "string"
           },
-          "firstName": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "productId": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "up": {
+                      "type": "number"
+                    },
+                    "topPhoto": {
+                      "type": "string"
+                    },
+                    "photos": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "specs": {
+                      "type": "component"
+                    },
+                    "totalRating": {
+                      "type": "number"
+                    },
+                    "ratings": {
+                      "type": "component"
+                    },
+                    "category": {
+                      "type": "string"
+                    },
+                    "stock": {
+                      "type": "component"
+                    },
+                    "securityStockQuantity": {
+                      "type": "number"
+                    },
+                    "producer": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "quantity": {
+                  "type": "number"
+                },
+                "up": {
+                  "type": "number"
+                },
+                "subTotal": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "address": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "long": {
+                "type": "string"
+              },
+              "lat": {
+                "type": "string"
+              }
+            }
+          },
+          "shippingTime": {
             "type": "string"
           },
-          "lastName": {
-            "type": "string"
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
           },
-          "birthday": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "gender": {
-            "type": "string"
-          },
-          "parent": {
+          "client": {
             "required": [
               "id"
             ],
@@ -800,187 +723,8 @@
               }
             }
           },
-          "bigImage": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "metrics": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "metricName": {
-                  "type": "string"
-                },
-                "lastUpdate": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "notation": {
-                  "type": "string"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "when": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "value": {
-                        "type": "number"
-                      }
-                    }
-                  }
-                },
-                "lastValue": {
-                  "type": "number"
-                }
-              }
-            }
-          },
-          "photo": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
+          "shippingFees": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -988,25 +732,9 @@
           }
         }
       },
-      "NewChildren": {
+      "NewOrders": {
         "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "birthday": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "gender": {
-            "type": "string"
-          },
-          "parent": {
-            "type": "string"
-          },
-          "metrics": {
+          "items": {
             "type": "array",
             "items": {
               "type": "object",
@@ -1017,42 +745,146 @@
                 "id": {
                   "type": "string"
                 },
-                "metricName": {
-                  "type": "string"
-                },
-                "lastUpdate": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "notation": {
-                  "type": "string"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
+                "productId": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "up": {
+                      "type": "number"
+                    },
+                    "topPhoto": {
+                      "type": "string"
+                    },
+                    "photos": {
+                      "type": "array",
+                      "items": {
                         "type": "string"
-                      },
-                      "when": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "value": {
-                        "type": "number"
                       }
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "specs": {
+                      "type": "component"
+                    },
+                    "totalRating": {
+                      "type": "number"
+                    },
+                    "ratings": {
+                      "type": "component"
+                    },
+                    "category": {
+                      "type": "string"
+                    },
+                    "stock": {
+                      "type": "component"
+                    },
+                    "securityStockQuantity": {
+                      "type": "number"
+                    },
+                    "producer": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "unit": {
+                      "type": "string"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
                     }
                   }
                 },
-                "lastValue": {
+                "quantity": {
+                  "type": "number"
+                },
+                "up": {
+                  "type": "number"
+                },
+                "subTotal": {
                   "type": "number"
                 }
               }
             }
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "address": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "long": {
+                "type": "string"
+              },
+              "lat": {
+                "type": "string"
+              }
+            }
+          },
+          "shippingTime": {
+            "type": "string"
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          },
+          "client": {
+            "type": "string"
+          },
+          "shippingFees": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -1070,7 +902,7 @@
   },
   "tags": [
     {
-      "name": "Children"
+      "name": "Orders"
     }
   ]
 }

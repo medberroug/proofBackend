@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/children": {
+    "/producers": {
       "get": {
         "deprecated": false,
-        "description": "Find all the children's records",
+        "description": "Find all the producers's records",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve producers document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Children"
+                    "$ref": "#/components/schemas/Producers"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Producers"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new children record",
+        "description": "Create a new producers record",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve producers document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Children"
+                  "$ref": "#/components/schemas/Producers"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Producers"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewChildren"
+                "$ref": "#/components/schemas/NewProducers"
               }
             }
           }
         }
       }
     },
-    "/children/count": {
+    "/producers/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of children documents",
+        "description": "Retrieve the numver of producers documents",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve producers document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Producers"
         ],
         "parameters": []
       }
     },
-    "/children/{id}": {
+    "/producers/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one children record",
+        "description": "Find one producers record",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve producers document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Children"
+                  "$ref": "#/components/schemas/Producers"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Producers"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single children record",
+        "description": "Update a single producers record",
         "responses": {
           "200": {
-            "description": "Retrieve children document(s)",
+            "description": "Retrieve producers document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Children"
+                  "$ref": "#/components/schemas/Producers"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Producers"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewChildren"
+                "$ref": "#/components/schemas/NewProducers"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single children record",
+        "description": "Delete a single producers record",
         "responses": {
           "200": {
-            "description": "deletes a single children based on the ID supplied",
+            "description": "deletes a single producers based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Children"
+          "Producers"
         ],
         "parameters": [
           {
@@ -509,222 +509,12 @@
             }
           }
         ]
-      }
-    },
-    "/getMyChildren/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Children"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/updateMetric/{childId}/{metric}": {
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Children"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/newMetric/{childId}": {
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Children"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     }
   },
   "components": {
     "schemas": {
-      "Children": {
+      "Producers": {
         "required": [
           "id"
         ],
@@ -732,142 +522,10 @@
           "id": {
             "type": "string"
           },
-          "firstName": {
+          "name": {
             "type": "string"
           },
-          "lastName": {
-            "type": "string"
-          },
-          "birthday": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "gender": {
-            "type": "string"
-          },
-          "parent": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "phone": {
-                "type": "string"
-              },
-              "photo": {
-                "type": "string"
-              },
-              "PrivateComments": {
-                "type": "component"
-              },
-              "address": {
-                "type": "component"
-              },
-              "userid": {
-                "type": "string"
-              },
-              "badge": {
-                "type": "string"
-              },
-              "following": {
-                "type": "component"
-              },
-              "robot": {
-                "type": "boolean"
-              },
-              "orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "bigImage": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "metrics": {
+          "comments": {
             "type": "array",
             "items": {
               "type": "object",
@@ -878,107 +536,13 @@
                 "id": {
                   "type": "string"
                 },
-                "metricName": {
+                "text": {
                   "type": "string"
                 },
-                "lastUpdate": {
+                "added": {
                   "type": "string",
                   "format": "date-time"
-                },
-                "notation": {
-                  "type": "string"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "when": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "value": {
-                        "type": "number"
-                      }
-                    }
-                  }
-                },
-                "lastValue": {
-                  "type": "number"
                 }
-              }
-            }
-          },
-          "photo": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           },
@@ -988,25 +552,12 @@
           }
         }
       },
-      "NewChildren": {
+      "NewProducers": {
         "properties": {
-          "firstName": {
+          "name": {
             "type": "string"
           },
-          "lastName": {
-            "type": "string"
-          },
-          "birthday": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "gender": {
-            "type": "string"
-          },
-          "parent": {
-            "type": "string"
-          },
-          "metrics": {
+          "comments": {
             "type": "array",
             "items": {
               "type": "object",
@@ -1017,39 +568,12 @@
                 "id": {
                   "type": "string"
                 },
-                "metricName": {
+                "text": {
                   "type": "string"
                 },
-                "lastUpdate": {
+                "added": {
                   "type": "string",
                   "format": "date-time"
-                },
-                "notation": {
-                  "type": "string"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "when": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "value": {
-                        "type": "number"
-                      }
-                    }
-                  }
-                },
-                "lastValue": {
-                  "type": "number"
                 }
               }
             }
@@ -1070,7 +594,7 @@
   },
   "tags": [
     {
-      "name": "Children"
+      "name": "Producers"
     }
   ]
 }

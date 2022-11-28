@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/blogposts": {
+    "/products": {
       "get": {
         "deprecated": false,
-        "description": "Find all the blogposts's records",
+        "description": "Find all the products's records",
         "responses": {
           "200": {
-            "description": "Retrieve blogposts document(s)",
+            "description": "Retrieve products document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Blogposts"
+                    "$ref": "#/components/schemas/Products"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Blogposts"
+          "Products"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new blogposts record",
+        "description": "Create a new products record",
         "responses": {
           "200": {
-            "description": "Retrieve blogposts document(s)",
+            "description": "Retrieve products document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Blogposts"
+                  "$ref": "#/components/schemas/Products"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Blogposts"
+          "Products"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBlogposts"
+                "$ref": "#/components/schemas/NewProducts"
               }
             }
           }
         }
       }
     },
-    "/blogposts/count": {
+    "/products/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of blogposts documents",
+        "description": "Retrieve the numver of products documents",
         "responses": {
           "200": {
-            "description": "Retrieve blogposts document(s)",
+            "description": "Retrieve products document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Blogposts"
+          "Products"
         ],
         "parameters": []
       }
     },
-    "/blogposts/{id}": {
+    "/products/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one blogposts record",
+        "description": "Find one products record",
         "responses": {
           "200": {
-            "description": "Retrieve blogposts document(s)",
+            "description": "Retrieve products document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Blogposts"
+                  "$ref": "#/components/schemas/Products"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Blogposts"
+          "Products"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single blogposts record",
+        "description": "Update a single products record",
         "responses": {
           "200": {
-            "description": "Retrieve blogposts document(s)",
+            "description": "Retrieve products document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Blogposts"
+                  "$ref": "#/components/schemas/Products"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Blogposts"
+          "Products"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBlogposts"
+                "$ref": "#/components/schemas/NewProducts"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single blogposts record",
+        "description": "Delete a single products record",
         "responses": {
           "200": {
-            "description": "deletes a single blogposts based on the ID supplied",
+            "description": "deletes a single products based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,498 +495,11 @@
         },
         "summary": "",
         "tags": [
-          "Blogposts"
+          "Products"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/blogPostsByCategories": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "parameters": []
-      }
-    },
-    "/blogPostsbyOneCategory/{categoryName}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "parameters": [
-          {
-            "name": "categoryName",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/blogPost/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/commentOnBlogPost/{id}/{commenterId}": {
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/likeABlogPost/{id}/{likedProfileId}/{action}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "likedProfileId",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "action",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/getBlogPostsAdmin": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "parameters": []
-      }
-    },
-    "/actionOnPost/{id}/{action}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Blogposts"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "action",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -1001,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Blogposts": {
+      "Products": {
         "required": [
           "id"
         ],
@@ -1009,51 +522,69 @@
           "id": {
             "type": "string"
           },
-          "by": {
+          "name": {
+            "type": "string"
+          },
+          "up": {
+            "type": "number"
+          },
+          "topPhoto": {
             "required": [
-              "id"
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "firstName": {
+              "name": {
                 "type": "string"
               },
-              "lastName": {
+              "alternativeText": {
                 "type": "string"
               },
-              "phone": {
+              "caption": {
                 "type": "string"
               },
-              "photo": {
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
                 "type": "string"
               },
-              "PrivateComments": {
-                "type": "component"
-              },
-              "address": {
-                "type": "component"
-              },
-              "userid": {
+              "ext": {
                 "type": "string"
               },
-              "badge": {
+              "mime": {
                 "type": "string"
               },
-              "following": {
-                "type": "component"
+              "size": {
+                "type": "number"
               },
-              "robot": {
-                "type": "boolean"
+              "url": {
+                "type": "string"
               },
-              "orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "previewUrl": {
+                "type": "string"
               },
-              "published_at": {
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
                 "type": "string"
               },
               "created_by": {
@@ -1064,10 +595,7 @@
               }
             }
           },
-          "text": {
-            "type": "string"
-          },
-          "images": {
+          "photos": {
             "type": "array",
             "items": {
               "required": [
@@ -1137,171 +665,197 @@
               }
             }
           },
-          "blogPostComments": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "by": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "phone": {
-                      "type": "string"
-                    },
-                    "photo": {
-                      "type": "string"
-                    },
-                    "PrivateComments": {
-                      "type": "component"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "userid": {
-                      "type": "string"
-                    },
-                    "badge": {
-                      "type": "string"
-                    },
-                    "following": {
-                      "type": "component"
-                    },
-                    "robot": {
-                      "type": "boolean"
-                    },
-                    "orders": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "text": {
-                  "type": "string"
-                },
-                "when": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "blogPostLikes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "by": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "phone": {
-                      "type": "string"
-                    },
-                    "photo": {
-                      "type": "string"
-                    },
-                    "PrivateComments": {
-                      "type": "component"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "userid": {
-                      "type": "string"
-                    },
-                    "badge": {
-                      "type": "string"
-                    },
-                    "following": {
-                      "type": "component"
-                    },
-                    "robot": {
-                      "type": "boolean"
-                    },
-                    "orders": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "when": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
+          "description": {
+            "type": "string"
           },
           "status": {
             "type": "boolean",
-            "default": true
+            "default": false
           },
-          "badge": {
+          "code": {
             "type": "string"
+          },
+          "specs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "specText": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "totalRating": {
+            "type": "number"
+          },
+          "ratings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "rating": {
+                  "type": "number"
+                },
+                "added": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "by": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "photo": {
+                      "type": "string"
+                    },
+                    "PrivateComments": {
+                      "type": "component"
+                    },
+                    "address": {
+                      "type": "component"
+                    },
+                    "userid": {
+                      "type": "string"
+                    },
+                    "badge": {
+                      "type": "string"
+                    },
+                    "following": {
+                      "type": "component"
+                    },
+                    "robot": {
+                      "type": "boolean"
+                    },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "category": {
-            "type": "string"
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "rank": {
+                "type": "integer"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
-          "title": {
-            "type": "string"
+          "stock": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "added": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "initialQuantity": {
+                  "type": "number"
+                },
+                "avalaibleQuantity": {
+                  "type": "number"
+                },
+                "unitBuyingPrice": {
+                  "type": "number"
+                }
+              }
+            }
           },
-          "publishTime": {
-            "type": "string",
-            "format": "date-time"
+          "securityStockQuantity": {
+            "type": "number"
+          },
+          "producer": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "component"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "discount": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -1309,179 +863,161 @@
           }
         }
       },
-      "NewBlogposts": {
+      "NewProducts": {
         "properties": {
-          "by": {
+          "name": {
             "type": "string"
           },
-          "text": {
+          "up": {
+            "type": "number"
+          },
+          "description": {
             "type": "string"
-          },
-          "blogPostComments": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "by": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "phone": {
-                      "type": "string"
-                    },
-                    "photo": {
-                      "type": "string"
-                    },
-                    "PrivateComments": {
-                      "type": "component"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "userid": {
-                      "type": "string"
-                    },
-                    "badge": {
-                      "type": "string"
-                    },
-                    "following": {
-                      "type": "component"
-                    },
-                    "robot": {
-                      "type": "boolean"
-                    },
-                    "orders": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "text": {
-                  "type": "string"
-                },
-                "when": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "blogPostLikes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "by": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "firstName": {
-                      "type": "string"
-                    },
-                    "lastName": {
-                      "type": "string"
-                    },
-                    "phone": {
-                      "type": "string"
-                    },
-                    "photo": {
-                      "type": "string"
-                    },
-                    "PrivateComments": {
-                      "type": "component"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "userid": {
-                      "type": "string"
-                    },
-                    "badge": {
-                      "type": "string"
-                    },
-                    "following": {
-                      "type": "component"
-                    },
-                    "robot": {
-                      "type": "boolean"
-                    },
-                    "orders": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "when": {
-                  "type": "string",
-                  "format": "date-time"
-                }
-              }
-            }
           },
           "status": {
             "type": "boolean",
-            "default": true
+            "default": false
           },
-          "badge": {
+          "code": {
             "type": "string"
+          },
+          "specs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "specText": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "totalRating": {
+            "type": "number"
+          },
+          "ratings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "rating": {
+                  "type": "number"
+                },
+                "added": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "by": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "photo": {
+                      "type": "string"
+                    },
+                    "PrivateComments": {
+                      "type": "component"
+                    },
+                    "address": {
+                      "type": "component"
+                    },
+                    "userid": {
+                      "type": "string"
+                    },
+                    "badge": {
+                      "type": "string"
+                    },
+                    "following": {
+                      "type": "component"
+                    },
+                    "robot": {
+                      "type": "boolean"
+                    },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "category": {
             "type": "string"
           },
-          "title": {
+          "stock": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "added": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "initialQuantity": {
+                  "type": "number"
+                },
+                "avalaibleQuantity": {
+                  "type": "number"
+                },
+                "unitBuyingPrice": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "securityStockQuantity": {
+            "type": "number"
+          },
+          "producer": {
             "type": "string"
           },
-          "publishTime": {
-            "type": "string",
-            "format": "date-time"
+          "discount": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -1499,7 +1035,7 @@
   },
   "tags": [
     {
-      "name": "Blogposts"
+      "name": "Products"
     }
   ]
 }

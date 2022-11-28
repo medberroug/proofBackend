@@ -1233,6 +1233,12 @@
                     "robot": {
                       "type": "boolean"
                     },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -1303,6 +1309,12 @@
                     "robot": {
                       "type": "boolean"
                     },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -1358,6 +1370,12 @@
               },
               "robot": {
                 "type": "boolean"
+              },
+              "orders": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "published_at": {
                 "type": "string"
@@ -1438,6 +1456,12 @@
                     "robot": {
                       "type": "boolean"
                     },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -1507,6 +1531,12 @@
                     },
                     "robot": {
                       "type": "boolean"
+                    },
+                    "orders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "published_at": {
                       "type": "string"

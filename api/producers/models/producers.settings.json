@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "producers",
+  "info": {
+    "name": "producers"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "products.comments"
+    }
+  }
+}

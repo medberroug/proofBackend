@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_products_stocks",
+  "info": {
+    "name": "stock",
+    "icon": "anchor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "added": {
+      "type": "datetime"
+    },
+    "initialQuantity": {
+      "type": "decimal"
+    },
+    "avalaibleQuantity": {
+      "type": "decimal"
+    },
+    "unitBuyingPrice": {
+      "type": "decimal"
+    }
+  }
+}
