@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/productcategories": {
+    "/tax": {
       "get": {
         "deprecated": false,
-        "description": "Find all the productcategories's records",
+        "description": "Find all the tax's records",
         "responses": {
           "200": {
-            "description": "Retrieve productcategories document(s)",
+            "description": "Retrieve tax document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Productcategories"
+                    "$ref": "#/components/schemas/Tax"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Productcategories"
+          "Tax"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single productcategories record",
+        "description": "Update a single tax record",
         "responses": {
           "200": {
-            "description": "Retrieve productcategories document(s)",
+            "description": "Retrieve tax document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Productcategories"
+                  "$ref": "#/components/schemas/Tax"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Productcategories"
+          "Tax"
         ],
         "requestBody": {
           "description": "",
@@ -247,7 +247,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProductcategories"
+                "$ref": "#/components/schemas/NewTax"
               }
             }
           }
@@ -256,10 +256,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single productcategories record",
+        "description": "Delete a single tax record",
         "responses": {
           "200": {
-            "description": "deletes a single productcategories based on the ID supplied",
+            "description": "deletes a single tax based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -302,7 +302,7 @@
         },
         "summary": "",
         "tags": [
-          "Productcategories"
+          "Tax"
         ],
         "parameters": []
       }
@@ -310,7 +310,7 @@
   },
   "components": {
     "schemas": {
-      "Productcategories": {
+      "Tax": {
         "required": [
           "id"
         ],
@@ -318,25 +318,9 @@
           "id": {
             "type": "string"
           },
-          "category": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "rank": {
-                  "type": "integer"
-                }
-              }
-            }
+          "sellingtax": {
+            "type": "number",
+            "default": 10
           },
           "published_at": {
             "type": "string",
@@ -344,27 +328,11 @@
           }
         }
       },
-      "NewProductcategories": {
+      "NewTax": {
         "properties": {
-          "category": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "rank": {
-                  "type": "integer"
-                }
-              }
-            }
+          "sellingtax": {
+            "type": "number",
+            "default": 10
           },
           "published_at": {
             "type": "string",
@@ -382,7 +350,7 @@
   },
   "tags": [
     {
-      "name": "Productcategories"
+      "name": "Tax"
     }
   ]
 }

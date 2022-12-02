@@ -2,24 +2,24 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/productcategories",
-      "handler": "productcategories.find",
+      "path": "/tax",
+      "handler": "tax.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/productcategories",
-      "handler": "productcategories.update",
+      "path": "/tax",
+      "handler": "tax.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/productcategories",
-      "handler": "productcategories.delete",
+      "path": "/tax",
+      "handler": "tax.delete",
       "config": {
         "policies": []
       }

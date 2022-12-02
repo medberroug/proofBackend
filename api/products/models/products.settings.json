@@ -58,9 +58,6 @@
       "repeatable": true,
       "component": "products.ratings"
     },
-    "category": {
-      "model": "productcategories"
-    },
     "stock": {
       "type": "component",
       "repeatable": true,
@@ -76,6 +73,9 @@
       "type": "decimal"
     },
     "unit": {
+      "type": "string"
+    },
+    "category": {
       "type": "string"
     }
   }

@@ -574,9 +574,6 @@
                     "ratings": {
                       "type": "component"
                     },
-                    "category": {
-                      "type": "string"
-                    },
                     "stock": {
                       "type": "component"
                     },
@@ -590,6 +587,9 @@
                       "type": "number"
                     },
                     "unit": {
+                      "type": "string"
+                    },
+                    "category": {
                       "type": "string"
                     },
                     "published_at": {
@@ -786,9 +786,6 @@
                     "ratings": {
                       "type": "component"
                     },
-                    "category": {
-                      "type": "string"
-                    },
                     "stock": {
                       "type": "component"
                     },
@@ -802,6 +799,9 @@
                       "type": "number"
                     },
                     "unit": {
+                      "type": "string"
+                    },
+                    "category": {
                       "type": "string"
                     },
                     "published_at": {

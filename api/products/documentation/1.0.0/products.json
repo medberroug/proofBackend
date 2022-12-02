@@ -771,31 +771,6 @@
               }
             }
           },
-          "category": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "rank": {
-                "type": "integer"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "stock": {
             "type": "array",
             "items": {
@@ -855,6 +830,9 @@
             "type": "number"
           },
           "unit": {
+            "type": "string"
+          },
+          "category": {
             "type": "string"
           },
           "published_at": {
@@ -977,9 +955,6 @@
               }
             }
           },
-          "category": {
-            "type": "string"
-          },
           "stock": {
             "type": "array",
             "items": {
@@ -1017,6 +992,9 @@
             "type": "number"
           },
           "unit": {
+            "type": "string"
+          },
+          "category": {
             "type": "string"
           },
           "published_at": {

@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "taxes",
+  "info": {
+    "name": "tax"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sellingtax": {
+      "type": "decimal",
+      "default": 10
+    }
+  }
+}

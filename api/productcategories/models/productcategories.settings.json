@@ -1,8 +1,9 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "productcategories",
   "info": {
-    "name": "productcategories"
+    "name": "productcategories",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -10,11 +11,10 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "rank": {
-      "type": "integer"
+    "category": {
+      "type": "component",
+      "repeatable": true,
+      "component": "categories.category"
     }
   }
 }
