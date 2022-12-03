@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_draft_orders_items",
+  "info": {
+    "name": "items",
+    "icon": "angle-left"
+  },
+  "options": {},
+  "attributes": {
+    "productId": {
+      "model": "products"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "up": {
+      "type": "decimal"
+    }
+  }
+}
