@@ -47,6 +47,13 @@
       "config": {
         "policies": []
       }
+    },{
+      "method": "GET",
+      "path": "/getProductsForHome",
+      "handler": "products.getProductsForHome",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
