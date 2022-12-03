@@ -16,7 +16,7 @@ module.exports = {
         let quantity = ctx.request.body.quantity
         let product = await strapi.services.products.findOne({ id: productId });
         let taxselling = await strapi.services.tax.find();
-        taxselling = tax.taxselling
+        taxselling = taxselling.taxselling
         let newDraft = {
             client: {
                 id: clientId,
