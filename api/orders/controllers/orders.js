@@ -14,6 +14,9 @@ module.exports = {
         let productId = ctx.request.body.productId
         let clientId = ctx.request.body.clientId
         let quantity = ctx.request.body.quantity
+        console.log(productId);
+        console.log(clientId);
+        console.log(quantity);
         let product = await strapi.services.products.findOne({ id: productId });
         let taxselling = await strapi.services.tax.find();
         taxselling = taxselling.sellingtax
