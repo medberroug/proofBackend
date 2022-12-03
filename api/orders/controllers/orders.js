@@ -41,5 +41,19 @@ module.exports = {
         }
         await strapi.services.orders.create(newDraft);
         return true
+    }, 
+    async pedningOrdersForClient(ctx) {
+        let { clientId } = ctx.params
+        let pendingOrders = await strapi.services.orders.find({
+            client: clientId
+        });
+        for(let i=0;i<pendingOrders.length;i++){
+            let latestStatus= pendingOrders[i].status.reverse()
+            if(latestStatus[0].name=="draft"){
+                return pendingOrders[i]
+            }
+        }
+        return null
     },
+
 };

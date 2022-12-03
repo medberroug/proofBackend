@@ -55,6 +55,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/pedningOrdersForClient/:clientId",
+      "handler": "orders.pedningOrdersForClient",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
