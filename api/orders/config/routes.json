@@ -63,6 +63,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/addItemToOrder",
+      "handler": "orders.addItemToOrder",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
