@@ -39,9 +39,7 @@ module.exports = {
             total: product.discount ? (product.up - product.up * product.discount / 100) * quantity : product.up * quantity,
 
         }
-        await strapi.services.orders.create({
-            newDraft
-        });
+        await strapi.services.orders.create(newDraft);
         return true
     },
 };
