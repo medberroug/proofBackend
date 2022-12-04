@@ -144,6 +144,7 @@ module.exports = {
             if (latestStatus[0].name == "created" || latestStatus[0].name == "validated" || latestStatus[0].name == "shipped") {
                 resultListOfPendingOrders.push(pendingOrders[i])
                 break
+            }
         }
         if (resultListOfPendingOrders.length > 0) {
             return resultListOfPendingOrders
