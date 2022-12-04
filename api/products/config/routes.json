@@ -54,6 +54,13 @@
       "config": {
         "policies": []
       }
+    },{
+      "method": "GET",
+      "path": "/getProductForCategory/:category",
+      "handler": "products.getProductForCategory",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
