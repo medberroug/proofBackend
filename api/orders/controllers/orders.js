@@ -133,7 +133,7 @@ module.exports = {
         await strapi.services.orders.create(newDraft);
         return true
     },
-    async pendingOrdersForClient(ctx) {
+    async ongoingOrdersForClient(ctx) {
         let { clientId } = ctx.params
         let pendingOrders = await strapi.services.orders.find({
             client: clientId
