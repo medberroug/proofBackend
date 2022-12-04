@@ -133,5 +133,24 @@ module.exports = {
         await strapi.services.orders.create(newDraft);
         return true
     },
+    async pendingOrdersForClient(ctx) {
+        let { clientId } = ctx.params
+        let pendingOrders = await strapi.services.orders.find({
+            client: clientId
+        });
+        let resultListOfPendingOrders = []
+        for (let i = 0; i < pendingOrders.length; i++) {
+            let latestStatus = pendingOrders[i].status.reverse()
+            if (latestStatus[0].name == "created" || latestStatus[0].name == "validated" || latestStatus[0].name == "shipped") {
+                resultListOfPendingOrders.push(pendingOrders[i])
+                break
+        }
+        if (resultListOfPendingOrders.length > 0) {
+            return resultListOfPendingOrders
+        }
+        return null
+
+    },
+
 
 };

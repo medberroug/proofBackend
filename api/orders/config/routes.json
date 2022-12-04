@@ -71,6 +71,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/ongoingOrdersForClient/:clientId",
+      "handler": "orders.ongoingOrdersForClient",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
