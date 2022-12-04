@@ -50,10 +50,16 @@ module.exports = {
         for (let i = 0; i < pendingOrders.length; i++) {
             let latestStatus = pendingOrders[i].status.reverse()
             if (latestStatus[0].name == "draft") {
-                return pendingOrders[i]
+                return {
+                    result : true,
+                    data : pendingOrders[i]
+                }
             }
         }
-        return null
+        return {
+            result : false, 
+            data: null
+        }
 
     },
     async productAlreadyInCart(ctx) {
