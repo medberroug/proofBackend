@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/warehouse",
+      "handler": "warehouse.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/warehouse",
+      "handler": "warehouse.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/warehouse",
+      "handler": "warehouse.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

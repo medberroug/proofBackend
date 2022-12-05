@@ -79,6 +79,15 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getShippingTime",
+      "handler": "orders.getShippingTime",
+      "config": {
+        "policies": []
+      }
     }
+
   ]
 }

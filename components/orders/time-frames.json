@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_orders_time_frames",
+  "info": {
+    "name": "timeFrames",
+    "icon": "arrows-alt-h",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "startHour": {
+      "type": "integer"
+    }
+  }
+}

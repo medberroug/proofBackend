@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "shipping_times",
+  "info": {
+    "name": "shippingTime",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "weekdays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.weekdays"
+    }
+  }
+}

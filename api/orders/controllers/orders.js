@@ -3,6 +3,14 @@ const { sanitizeEntity } = require('strapi-utils');
 var formatDistanceToNow = require('date-fns/formatDistanceToNow')
 const eoLocale = require('date-fns/locale/fr')
 var parseISO = require('date-fns/parseISO')
+var format = require('date-fns/format')
+var getDay = require('date-fns/getDay')
+var addHours = require('date-fns/addHours')
+var setHours = require('date-fns/setHours')
+var addDays = require('date-fns/addDays')
+var isAfter = require('date-fns/isAfter')
+var isBefore = require('date-fns/isBefore')
+var setMinutes = require('date-fns/setMinutes')
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -51,13 +59,13 @@ module.exports = {
             let latestStatus = pendingOrders[i].status.reverse()
             if (latestStatus[0].name == "draft") {
                 return {
-                    result : true,
-                    data : pendingOrders[i]
+                    result: true,
+                    data: pendingOrders[i]
                 }
             }
         }
         return {
-            result : false, 
+            result: false,
             data: null
         }
 
@@ -156,8 +164,92 @@ module.exports = {
             return resultListOfPendingOrders
         }
         return null
+    },
+    async removeItemFromPendingOrder(ctx) {
+        let { clientId, productId } = ctx.params
+        let selectedOrder
+        let pendingOrders = await strapi.services.orders.find({
+            client: clientId
+        });
+        for (let i = 0; i < pendingOrders.length; i++) {
+            let latestStatus = pendingOrders[i].status.reverse()
+            if (latestStatus[0].name == "draft") {
+                selectedOrder = pendingOrders[i]
+            }
+        }
+        for (let j = 0; j < selectedOrder.items.length; j++) {
+            if (selectedOrder.items[j].productId.id == productId) {
+                selectedOrder.items.splice(j, 1)
+            }
+        }
+        await strapi.services.orders.update({ id: selectedOrder.id }, {
+            items: selectedOrder.items
+        });
+        return true
 
     },
+    async getShippingTime(ctx) {
+        // let { clientId, productId } = ctx.params
+        let selectedOrder
+        let securityHours = 2
+        let shippingTime = await strapi.services["shipping-time"].find();
+        shippingTime = shippingTime.weekdays
+        let now = new Date()
+        let nowDayOfTheWeek = getDay(now)
+        let DayAdds = 0
+        let cursor
+        for (let i = 0; i < shippingTime.length; i++) {
+            if (shippingTime[i].dayCode == nowDayOfTheWeek) {
+                cursor = i
+            }
+        }
+        let newList = []
+        for (let i = cursor; i < shippingTime.length; i++) {
+            newList.push(shippingTime[i])
+        }
+        for (let i = 0; i < cursor; i++) {
+            newList.push(shippingTime[i])
+        }
+        console.log(newList);
+        let newHourForToday = new Date()
+        newHourForToday = addHours(newHourForToday, 2)
+        console.log(newList[0].timeFrames);
+        for (let i = 0; i < newList[0].timeFrames.length; i++) {
+            let startHour = setHours(new Date(), newList[0].timeFrames[i].startHour)
+            startHour = setMinutes(startHour, 0)
+            let endHour = setHours(new Date(), newList[0].timeFrames[i].startHour + 1)
+            endHour = setMinutes(endHour, 0)
+            console.log(startHour);
+            console.log(endHour);
+            if (isBefore(newHourForToday, startHour)) {
+                return startHour
+            }
+        }
+        for (let i = 1; i < newList.length; i++) {
+            if (newList[i].timeFrames.length) {
+                let startHour = setHours(new Date(), newList[i].timeFrames[0].startHour)
+                startHour = addDays(startHour, i)
+                startHour = setMinutes(startHour, 0)
+                let endHour = addHours(startHour, 1)
+                endHour = setMinutes(endHour, 0)
+                return {
+                    result: true,
+                    data: [{
+                        date: startHour,
+                        textDate: format(startHour, "EEEE d LLL yyyy - HH:mm", {
+                            locale: eoLocale
+                        }) + format(endHour, " 'et' HH:mm", {
+                            locale: eoLocale
+                        })
+                    }]
+                }
+            }
+        }
+        return null
+
+
+    },
+
 
 
 };

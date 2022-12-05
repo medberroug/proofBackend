@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_orders_weekdays",
+  "info": {
+    "name": "weekdays",
+    "icon": "arrows-alt"
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "string"
+    },
+    "dayCode": {
+      "type": "string"
+    },
+    "timeFrames": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.time-frames"
+    }
+  }
+}

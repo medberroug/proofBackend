@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "warehouses",
+  "info": {
+    "name": "warehouse",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "lat": {
+      "type": "string",
+      "default": "33.933346"
+    },
+    "long": {
+      "type": "string",
+      "default": "-6.908874"
+    }
+  }
+}
