@@ -87,6 +87,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/removeItemFromPendingOrder/:clientId/productId",
+      "handler": "orders.removeItemFromPendingOrder",
+      "config": {
+        "policies": []
+      }
     }
 
   ]

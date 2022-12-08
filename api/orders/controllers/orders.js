@@ -222,7 +222,17 @@ module.exports = {
             console.log(startHour);
             console.log(endHour);
             if (isBefore(newHourForToday, startHour)) {
-                return startHour
+                return {
+                    result: true,
+                    data: [{
+                        date: startHour,
+                        textDate: format(startHour, "EEEE d LLL yyyy - HH:mm", {
+                            locale: eoLocale
+                        }) + format(endHour, " 'et' HH:mm", {
+                            locale: eoLocale
+                        })
+                    }]
+                }
             }
         }
         for (let i = 1; i < newList.length; i++) {
@@ -245,7 +255,10 @@ module.exports = {
                 }
             }
         }
-        return null
+        return {
+            result : false, 
+            date : null
+        }
 
 
     },
