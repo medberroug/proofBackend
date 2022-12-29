@@ -111,6 +111,13 @@
       "config": {
         "policies": []
       }
+    },{
+      "method": "PUT",
+      "path": "/putOrder",
+      "handler": "orders.putOrder",
+      "config": {
+        "policies": []
+      }
     }
 
   ]
