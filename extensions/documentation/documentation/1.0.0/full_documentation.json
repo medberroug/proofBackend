@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/06/2022 11:40:43 AM"
+    "x-generation-date": "12/29/2022 11:37:51 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3435,7 +3435,7 @@
         "parameters": []
       }
     },
-    "/removeItemFromPendingOrder/{clientId}/productId": {
+    "/removeItemFromPendingOrder/{clientId}/{productId}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -3492,6 +3492,16 @@
         "parameters": [
           {
             "name": "clientId",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "productId",
             "in": "path",
             "description": "",
             "deprecated": false,

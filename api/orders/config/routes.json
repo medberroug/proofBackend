@@ -90,7 +90,7 @@
     },
     {
       "method": "GET",
-      "path": "/removeItemFromPendingOrder/:clientId/productId",
+      "path": "/removeItemFromPendingOrder/:clientId/:productId",
       "handler": "orders.removeItemFromPendingOrder",
       "config": {
         "policies": []

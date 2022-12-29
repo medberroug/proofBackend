@@ -853,7 +853,7 @@
         "parameters": []
       }
     },
-    "/removeItemFromPendingOrder/{clientId}/productId": {
+    "/removeItemFromPendingOrder/{clientId}/{productId}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -910,6 +910,16 @@
         "parameters": [
           {
             "name": "clientId",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "productId",
             "in": "path",
             "description": "",
             "deprecated": false,
