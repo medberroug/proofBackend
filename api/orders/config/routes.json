@@ -95,6 +95,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/ongoingOrdersForClientForMobile/:clientId",
+      "handler": "orders.ongoingOrdersForClientForMobile",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/allOrdersForClientForMobile/:clientId",
+      "handler": "orders.allOrdersForClientForMobile",
+      "config": {
+        "policies": []
+      }
     }
 
   ]

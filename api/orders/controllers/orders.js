@@ -50,6 +50,40 @@ module.exports = {
         await strapi.services.orders.create(newDraft);
         return true
     },
+    async putOrder(ctx) {
+        let orderId = ctx.request.body.orderId
+        let shippingTime = ctx.request.body.shippingTime
+        let addressStreet = ctx.request.body.addressStreet
+        let addressCity = ctx.request.body.addressCity
+        let newPhone = ctx.request.body.newPhone
+        let long = ctx.request.body.long
+        let lat = ctx.request.body.lat
+        let order = await strapi.services.orders.findOne({ id: productId });
+        order.status.push({
+            date: new Date(),
+            name: "created"
+        })
+        let client = await strapi.services.userprofiles.findOne({ id: order.client.id });
+        await strapi.services.orders.update({ id: orderId }, {
+            status: order.status,
+            shippingTime: shippingTime,
+            address: {
+                text: addressStreet,
+                long: long,
+                lat: lat
+            }
+        });
+        await strapi.services.userprofiles.update({ id: client.id }, {
+            address: {
+                street: addressStreet,
+                city: addressCity,
+                long: long,
+                lat: lat
+            },
+            phone: newPhone
+        });
+        return true
+    },
     async pedningOrdersForClient(ctx) {
         let { clientId } = ctx.params
         let pendingOrders = await strapi.services.orders.find({
@@ -165,27 +199,132 @@ module.exports = {
         }
         return null
     },
-    async removeItemFromPendingOrder(ctx) {
-        let { clientId, productId } = ctx.params
-        let selectedOrder
+    async ongoingOrdersForClientForMobile(ctx) {
+        let { clientId } = ctx.params
         let pendingOrders = await strapi.services.orders.find({
             client: clientId
         });
+        let resultListOfPendingOrders = []
+        for (let i = 0; i < pendingOrders.length; i++) {
+            let latestStatus = pendingOrders[i].status.reverse()
+            if (latestStatus[0].name == "created" || latestStatus[0].name == "validated" || latestStatus[0].name == "shipped") {
+                let myProductNames = pendingOrders[i].items[0].productId.name
+                for (let j = 1; j < pendingOrders[i].items.length; j++) {
+                    myProductNames = myProductNames + ", " + pendingOrders[i].items[j].productId.name
+                }
+                let p = "lundi 2 janv. 2023 - 14:00 et 15:00"
+                let myShippingDay = pendingOrders[i].shippingTime.split(" ");
+                myShippingDay = myShippingDay[0] + " " + myShippingDay[1]
+                let myShippingHour = pendingOrders[i].shippingTime.split(" ");
+                console.log(myShippingHour);
+                myShippingHour = myShippingHour[5] + " - " + myShippingHour[7]
+                let anOrder = {
+                    id: pendingOrders[i].id,
+                    day: myShippingDay,
+                    hour: myShippingHour,
+                    toPay: pendingOrders[i].total,
+                    productNames: myProductNames
+                }
+                resultListOfPendingOrders.push(anOrder)
+            }
+        }
+        return resultListOfPendingOrders
+    },
+    async allOrdersForClientForMobile(ctx) {
+        let { clientId } = ctx.params
+        let pendingOrders = await strapi.services.orders.find({
+            client: clientId
+        });
+        let resultListOfPendingOrders = []
+        for (let i = 0; i < pendingOrders.length; i++) {
+            let latestStatus = pendingOrders[i].status.reverse()
+            if (latestStatus[0].name == "created" || latestStatus[0].name == "validated" || latestStatus[0].name == "shipped") {
+                let myProductNames = pendingOrders[i].items[0].productId.name
+                for (let j = 1; j < pendingOrders[i].items.length; j++) {
+                    myProductNames = myProductNames + ", " + pendingOrders[i].items[j].productId.name
+                }
+                let p = "lundi 2 janv. 2023 - 14:00 et 15:00"
+                let myShippingDay = pendingOrders[i].shippingTime.split(" ");
+                myShippingDay = myShippingDay[0] + " " + myShippingDay[1]
+                let myShippingHour = pendingOrders[i].shippingTime.split(" ");
+                myShippingHour = myShippingHour[5] + " - " + myShippingHour[7]
+                let anOrder = {
+                    id: pendingOrders[i].id,
+                    day: myShippingDay,
+                    hour: myShippingHour,
+                    toPay: pendingOrders[i].total,
+                    productNames: myProductNames
+                }
+                resultListOfPendingOrders.push(anOrder)
+            }
+        }
+        let resultListOfPendingOrdersOthers = []
+        for (let i = 0; i < pendingOrders.length; i++) {
+            let latestStatus = pendingOrders[i].status
+            console.log(pendingOrders[i].status);
+            if (latestStatus[0].name == "closed") {
+
+
+                let myProductNames = pendingOrders[i].items[0].productId.name
+                for (let j = 1; j < pendingOrders[i].items.length; j++) {
+                    myProductNames = myProductNames + ", " + pendingOrders[i].items[j].productId.name
+                }
+                let shippedTime
+                for (let k = 0; k < pendingOrders[i].status.length; k++) {
+                    if (pendingOrders[i].status[k].name == "shipped") {
+                        shippedTime = format(parseISO(pendingOrders[i].status[k].date), "EEEE d LLL yyyy - HH:mm", {
+                            locale: eoLocale
+                        })
+                    }
+                }
+                shippedTime = shippedTime.split(" ");
+                let shippedTimeDay = shippedTime[0] + " " + shippedTime[1]
+                let shippedTimeHour = shippedTime[5]
+                console.log(shippedTime);
+                console.log("XXXX");
+                let anOrder = {
+                    id: pendingOrders[i].id,
+                    day: shippedTimeDay,
+                    hour: shippedTimeHour,
+                    paid: pendingOrders[i].total,
+                    productNames: myProductNames
+                }
+                resultListOfPendingOrdersOthers.push(anOrder)
+            }
+        }
+        return { pending: resultListOfPendingOrders, closed: resultListOfPendingOrdersOthers }
+    },
+    async removeItemFromPendingOrder(ctx) {
+        let { clientId, productId } = ctx.params
+        let selectedOrder
+        console.log(clientId + productId);
+        let pendingOrders = await strapi.services.orders.find({
+            client: clientId
+        });
+        console.log(pendingOrders);
         for (let i = 0; i < pendingOrders.length; i++) {
             let latestStatus = pendingOrders[i].status.reverse()
             if (latestStatus[0].name == "draft") {
                 selectedOrder = pendingOrders[i]
             }
         }
+        console.log(selectedOrder);
         for (let j = 0; j < selectedOrder.items.length; j++) {
             if (selectedOrder.items[j].productId.id == productId) {
                 selectedOrder.items.splice(j, 1)
             }
         }
-        await strapi.services.orders.update({ id: selectedOrder.id }, {
-            items: selectedOrder.items
-        });
-        return true
+        if (selectedOrder.items.length == 0) {
+            await strapi.services.orders.delete({ id: selectedOrder.id });
+            return "All"
+        } else {
+            await strapi.services.orders.update({ id: selectedOrder.id }, {
+                items: selectedOrder.items
+            });
+        }
+
+
+        return "Item"
 
     },
     async getShippingTime(ctx) {
@@ -256,8 +395,8 @@ module.exports = {
             }
         }
         return {
-            result : false, 
-            date : null
+            result: false,
+            date: null
         }
 
 
