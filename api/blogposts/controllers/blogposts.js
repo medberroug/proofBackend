@@ -35,7 +35,7 @@ module.exports = {
 
         for (let i = 0; i < blogposts.length; i++) {
             var dateCreatedIn = formatDistanceToNow(
-                blogposts[i].publishTime,
+                parseISO( blogposts[i].publishTime),
                 { locale: eoLocale }
             )
             let newBlogPost = {
@@ -79,7 +79,7 @@ module.exports = {
         for (let i = 0; i < blogposts.length; i++) {
             if (blogposts[i].category == categoryName) {
                 var dateCreatedIn = formatDistanceToNow(
-                    blogposts[i].publishTime,
+                    parseISO( blogposts[i].publishTime),
                     { locale: eoLocale }
                 )
                 let newBlogPost = {
@@ -121,7 +121,7 @@ module.exports = {
         }
         blogPostComments
         let dateCreatedIn = formatDistanceToNow(
-            new Date(blogpost.publishTime),
+            new Date(parseISO( blogpost.publishTime)),
             { locale: eoLocale }
         )
         let newBlogPost = {
