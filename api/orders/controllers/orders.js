@@ -58,7 +58,7 @@ module.exports = {
         let newPhone = ctx.request.body.newPhone
         let long = ctx.request.body.long
         let lat = ctx.request.body.lat
-        let order = await strapi.services.orders.findOne({ id: productId });
+        let order = await strapi.services.orders.findOne({ id: orderId });
         order.status.push({
             date: new Date(),
             name: "created"
