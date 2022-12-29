@@ -63,7 +63,7 @@ module.exports = {
             date: new Date(),
             name: "created"
         })
-        let client = await strapi.services.userprofiles.findOne({ id: order.client.id });
+        let client = await strapi.services.userprofile.findOne({ id: order.client.id });
         await strapi.services.orders.update({ id: orderId }, {
             status: order.status,
             shippingTime: shippingTime,
@@ -73,7 +73,7 @@ module.exports = {
                 lat: lat
             }
         });
-        await strapi.services.userprofiles.update({ id: client.id }, {
+        await strapi.services.userprofile.update({ id: client.id }, {
             address: {
                 street: addressStreet,
                 city: addressCity,
