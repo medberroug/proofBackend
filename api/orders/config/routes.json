@@ -118,6 +118,21 @@
       "config": {
         "policies": []
       }
+    },{
+      "method": "GET",
+      "path": "/getOrderStatus/:orderId",
+      "handler": "orders.getOrderStatus",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getOrderShippedTime/:orderId",
+      "handler": "orders.getOrderShippedTime",
+      "config": {
+        "policies": []
+      }
     }
 
   ]

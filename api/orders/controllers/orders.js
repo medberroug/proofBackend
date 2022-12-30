@@ -52,7 +52,7 @@ module.exports = {
     },
     async putOrder(ctx) {
         let orderId = ctx.request.body.orderId
-        let shippingTime = ctx.request.body.shippingTime
+        let shippingTimeX = ctx.request.body.shippingTime
         let addressStreet = ctx.request.body.addressStreet
         let addressCity = ctx.request.body.addressCity
         let newPhone = ctx.request.body.newPhone
@@ -66,7 +66,7 @@ module.exports = {
         let client = await strapi.services.userprofile.findOne({ id: order.client.id });
         await strapi.services.orders.update({ id: orderId }, {
             status: order.status,
-            shippingTime: shippingTime,
+            shippingTime: shippingTimeX,
             address: {
                 text: addressStreet,
                 long: long,
@@ -83,6 +83,64 @@ module.exports = {
             phone: newPhone
         });
         return true
+    },
+    async getOrderStatus(ctx) {
+        let { orderId } = ctx.params
+        let order = await strapi.services.orders.findOne({ id: orderId });
+        order.status.reverse()
+        if (order.status[0].name == "created") {
+            return {
+                name: "Commande envoyée",
+                color: "#4B39EF"
+            }
+        } else if (order.status[0].name == "validated") {
+            return {
+                name: "Commande validée",
+                color: "#0DBE00"
+            }
+        } else if (order.status[0].name == "notValidated") {
+            return {
+                name: "Commande rejeté",
+                color: "#DB0101"
+            }
+        } else if (order.status[0].name == "shipped") {
+            return {
+                name: "Commande expédiée",
+                color: "#0DBE00"
+            }
+        } else if (order.status[0].name == "closed") {
+            return {
+                name: "Commande clôturée",
+                color: "#7E2D4E"
+            }
+        } else if (order.status[0].name == "cancelled") {
+            return {
+                name: "Commande annulée",
+                color: "#DB0101"
+            }
+        } else if (order.status[0].name == "returned") {
+            return {
+                name: "Commande renvoyé",
+                color: "#DB0101"
+            }
+        }
+        return {
+            name: "indéterminé",
+            color: "#7E2D4E"
+        }
+    }, async getOrderShippedTime(ctx) {
+        let { orderId } = ctx.params
+        let order = await strapi.services.orders.findOne({ id: orderId });
+        order.status.reverse()
+        let shippedTime
+        for (let k = 0; k < order.status.length; k++) {
+            if (order.status[k].name == "shipped") {
+                shippedTime = format(parseISO(order.status[k].date), "EEEE d LLL yyyy - HH:mm", {
+                    locale: eoLocale
+                })
+            }
+        }
+        return shippedTime
     },
     async pedningOrdersForClient(ctx) {
         let { clientId } = ctx.params
