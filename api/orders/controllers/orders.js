@@ -296,7 +296,7 @@ module.exports = {
         let resultListOfPendingOrders = []
         for (let i = 0; i < pendingOrders.length; i++) {
             let latestStatus = pendingOrders[i].status.reverse()
-            if (latestStatus[0].name == "created" || latestStatus[0].name == "validated" || latestStatus[0].name == "shipped") {
+            if (latestStatus[0].name == "created" || latestStatus[0].name == "validated" ) {
                 let myProductNames = pendingOrders[i].items[0].productId.name
                 for (let j = 1; j < pendingOrders[i].items.length; j++) {
                     myProductNames = myProductNames + ", " + pendingOrders[i].items[j].productId.name
@@ -320,7 +320,7 @@ module.exports = {
         for (let i = 0; i < pendingOrders.length; i++) {
             let latestStatus = pendingOrders[i].status
             console.log(pendingOrders[i].status);
-            if (latestStatus[0].name == "closed") {
+            if (latestStatus[0].name == "closed"|| latestStatus[0].name == "shipped") {
 
 
                 let myProductNames = pendingOrders[i].items[0].productId.name
@@ -330,7 +330,7 @@ module.exports = {
                 let shippedTime
                 for (let k = 0; k < pendingOrders[i].status.length; k++) {
                     if (pendingOrders[i].status[k].name == "shipped") {
-                        shippedTime = format(parseISO(pendingOrders[i].status[k].date), "EEEE d LLL yyyy - HH:mm", {
+                        shippedTime = format(parseISO(pendingOrders[i].status[k].date), "EEE d LLL yyyy - HH:mm", {
                             locale: eoLocale
                         })
                     }
